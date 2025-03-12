@@ -43,6 +43,14 @@ resource "aws_instance" "web_server" {
   vpc_security_group_ids = [aws_security_group.web_sg.id]
 
   tags = {
-    Name = "WebServer"
+    Name = "WebServer-1"
+  }
+}
+
+terraform {
+  backend "s3" {
+    bucket = "my-s3-bucket-2217"  # Must create this first!
+    key    = "terraform.tfstate"
+    region = "eu-west-1"
   }
 }
