@@ -46,3 +46,11 @@ resource "aws_instance" "web_server" {
     Name = "WebServer"
   }
 }
+
+terraform {
+  backend "s3" {
+    bucket = "my-s3-bucket-2217"  # Must create this first!
+    key    = "terraform.tfstate"
+    region = "eu-west-1"
+  }
+}
